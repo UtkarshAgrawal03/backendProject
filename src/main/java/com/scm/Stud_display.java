@@ -44,11 +44,15 @@ public class Stud_display extends HttpServlet {
 			ob=(stud_table)s1.get(stud_table.class,Integer.parseInt(request.getParameter("did")));
 			tx.commit();
 			PrintWriter out=response.getWriter();
+			if(ob!=null) {
 			out.println("student id: "+ob.getStu_id()+"\n");
 			out.println("student name: "+ob.getStu_name()+"\n");
 			out.println("student Address: "+ob.getStu_Address()+"\n");
 			out.println("student Contact: "+ob.getStu_contact()+"\n");
-			out.println("student gender: "+ob.getStu_gen()+"\n");
+			out.println("student gender: "+ob.getStu_gen()+"\n");}
+			else {
+				response.sendRedirect("St_disp.jsp");
+			}
 			}
 
 	/**

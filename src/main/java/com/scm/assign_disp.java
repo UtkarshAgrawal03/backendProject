@@ -43,10 +43,14 @@ Assigned_table ob=new Assigned_table();
 			Session s1=sf.openSession();
 			Transaction tx=s1.beginTransaction();
 			ob=(Assigned_table)s1.get(Assigned_table.class,Integer.parseInt(request.getParameter("sid")));
+			if(ob!=null) {
 			out.println("Serial Id: "+ob.getSid()+"\n");
 			out.println("Class Id: "+ob.getcId()+"\n");
 			out.println("Sub Id: "+ob.getSubId()+"\n");
-			out.println("Teacher ID: "+ob.getTid()+"\n");
+			out.println("Teacher ID: "+ob.getTid()+"\n");}
+			else {
+				response.sendRedirect("Assign_disp.jsp");
+			}
 			tx.commit();
 			response.sendRedirect("AssignAdd.jsp");
 	}

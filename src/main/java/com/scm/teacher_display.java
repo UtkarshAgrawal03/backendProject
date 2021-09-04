@@ -44,11 +44,16 @@ public class teacher_display extends HttpServlet {
 				ob=(teacher_table)s1.get(teacher_table.class,Integer.parseInt(request.getParameter("did")));
 				tx.commit();
 				PrintWriter out=response.getWriter();
+				if(ob!=null) {
 				out.println("Teacher id: "+ob.getT_id()+"\n");
 				out.println("Teacher name: "+ob.getT_name()+"\n");
 				out.println(" Teacher Specializtaion: "+ob.getT_spec()+"\n");
 				
 				out.println("Teacher gender: "+ob.getT_gen()+"\n");
+				}
+				else {
+					response.sendRedirect("Teacher_disp.jsp");
+				}
 				}
 	
 	/**

@@ -43,10 +43,14 @@ public class class_display extends HttpServlet {
 				Transaction tx=s1.beginTransaction();
 				ob=(class_table)s1.get(class_table.class,Integer.parseInt(request.getParameter("did")));
 				tx.commit();
+				if(ob!=null) {
 				PrintWriter out=response.getWriter();
 				out.println("Class Standard: "+ob.getStd()+"\n");
 				out.println("Class Strength: "+ob.getStrength()+"\n");
 				out.println("Class teacher: "+ob.getClass_teacher()+"\n");}
+				else{
+					response.sendRedirect("class_disp.jsp");}
+				}
 				
 
 	/**
